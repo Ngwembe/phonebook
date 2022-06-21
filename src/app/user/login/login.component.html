@@ -1,0 +1,32 @@
+<form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">
+  <div class="form-header">
+    <h2>Login</h2>
+  </div>
+  <div class="form-group">
+    <label for="email" class="form-label">Email:</label>
+    <em *ngIf="(loginForm.controls['email']?.invalid && loginForm.controls['email']?.touched) || (mouseoverLogin && loginForm.invalid)">Required</em>
+    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" (ngModel)="email"
+           required>
+  </div>
+  <br />
+  <div class="mb-3">
+    <label for="password" class="form-label">Password:</label>
+    <em *ngIf="(loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched) || (mouseoverLogin && loginForm.invalid)">Required</em>
+    <input type="password" class="form-control" id="password" placeholder="Enter password" name="password"
+           (ngModel)="password" required>
+  </div>
+  <div class="form-check mb-3">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="row">
+    <span (mouseover)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false" class="col col-md-6">
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" style="width:100%;">Login</button>
+    </span>
+    <div class="col col-md-6">
+      <button type="button" class="btn btn-secondary" (click)="cancel()" style="width:100%;">Cancel</button>
+    </div>
+  </div>
+</form>

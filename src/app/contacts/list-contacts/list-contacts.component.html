@@ -1,0 +1,47 @@
+  <div class="row">
+    <h4 style="text-align: center">Contacts</h4>
+  </div>
+
+  <div class="row">
+    <input type="text" name="search" placeholder="Enter firstname or phone number" class="col-md-6" [(ngModel)]="searchTerm" />
+  </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <!--<div class="row">
+      <ul *ngIf="contacts" class="list-group">
+        <li *ngFor="let _contact of contacts" class="list-group-item">
+          <app-contact-details [contact]="_contact"></app-contact-details>
+
+        </li>
+      </ul>
+    </div>-->
+   
+    <table *ngIf="contacts" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Contact name</th>
+          <th>Phone number</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr *ngFor="let _contact of contacts|filter:searchTerm">
+        <td>{{_contact?.owner?.firstName}} {{_contact?.owner?.lastName}}</td>
+        <td>{{ _contact?.phoneNumber }}</td>
+        <td>
+          <div class="row">
+            <a [routerLink]="['/contacts/new', _contact?.contactId]" class="btn btn-primary col-sm-5">
+              <span class="glyphicon glyphicon-plus"></span> Add
+            </a>
+            <a [routerLink]="['/contacts/edit', _contact?.contactId]" class="btn btn-secondary col-sm-5">
+              <span class="glyphicon glyphicon-pencil"></span> Edit
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+

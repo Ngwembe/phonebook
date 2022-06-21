@@ -1,0 +1,30 @@
+<div class="col-md-6">
+
+  <!--<div>{{ contact?.owner?.firstName }}</div>
+  <div>{{ contact?.contactId }}</div>
+  <div>{{ contact?.phoneNumber }}</div>-->
+
+  <app-collapsible-well>
+    <div well-title style="text-align: center">
+      {{ contact?.owner?.firstName }}
+    </div>
+    <hr />
+    <div well-body>
+      <div>
+        <label>Contact Type:</label>
+        <span>Mobile</span>
+      </div>
+
+      <div>
+        <label>Phone Number:</label>
+        <span>{{ contact?.phoneNumber }}</span>
+      </div>
+    </div>
+
+    <div well-buttons class="row">
+      <button type="button" class="btn btn-secondary">Remove</button>
+      <button type="button" class="btn btn-warning" (click)="editContact(contact?.contactId)">Edit</button>
+    </div>
+
+  </app-collapsible-well>
+</div>

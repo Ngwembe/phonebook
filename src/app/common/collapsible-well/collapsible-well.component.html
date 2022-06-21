@@ -1,0 +1,8 @@
+<div class="well pointable">
+  <h4 (click)="toggleContent()">
+    <ng-content select="[well-title]"></ng-content>
+  </h4>
+  <ng-content *ngIf="visible" select="[well-body]"></ng-content>
+
+  <ng-content *ngIf="visible" select="[well-buttons]"></ng-content>
+</div>

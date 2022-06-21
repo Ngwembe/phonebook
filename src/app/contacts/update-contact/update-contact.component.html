@@ -1,0 +1,31 @@
+<form [formGroup]="profileForm" (ngSubmit)="updateContact(profileForm.value)">
+  <div class="form-header">
+    <h2>Update Contact</h2>
+  </div>
+
+  <div class="mb-3">
+    <img src="../../../assets/images/Crop800x600.jpg" alt="Profile_Image" [width]="200" [height]="200" style="border-radius: 50%;">
+  </div>
+
+
+  <div class="form-group" [ngClass]="{'error' : !validateFirstName()}">
+    <label for="firstName" class="form-label">First Name:</label>
+    <em *ngIf="!validateFirstName()">Required</em>
+    <input type="firstName" class="form-control" id="firstName" placeholder="Enter firstName" formControlName="firstName">
+  </div>
+  <br />
+  <div class="form-group mb-3" [ngClass]="{'error' : !validateLastName()}">
+    <label for="lastName" class="form-label">Last Name:</label>
+    <em *ngIf="!validateLastName()">Required</em>
+    <input type="lastName" class="form-control" id="lastName" placeholder="Enter lastName" formControlName="lastName">
+  </div>
+
+  <div class="row">
+    <div class="col col-md-6">
+      <button type="submit" class="btn btn-primary" style="width:100%;">Save Changes</button>
+    </div>
+    <div class="col col-md-6">
+      <button type="button" class="btn btn-secondary" (click)="cancel()" style="width:100%;">Cancel</button>
+    </div>
+  </div>
+</form>
